@@ -1,0 +1,104 @@
+[nz-button] {
+  margin-right: 8px;
+
+}
+
+nz-button-group [nz-button] {
+  margin-right: 0;
+}
+.main{
+  width: 100%;
+  height: 100%;
+  background: url("../../../assets/img/tahoe2.jpg")no-repeat center  ;
+  background-size: cover;
+}
+.card{
+  width: 100%;
+  height: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.card-block{
+  width: 400px;
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  border: 1px solid #000;
+  background: radial-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4));
+  background: -webkit-radial-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4));
+  -webkit-box-shadow: 1px 3px 18px 12px rgba(0, 144, 255, 0.2);
+  -moz-box-shadow: 1px 3px 18px 12px rgba(0, 144, 255, 0.2);
+  box-shadow: 1px 3px 18px 12px rgba(0, 144, 255, 0.2);
+
+}
+
+///////
+
+$primary: #11998e;
+$secondary: #38ef7d;
+$white: #fff;
+$gray: #9b9b9b;
+.form__group {
+  position: relative;
+  padding: 15px 0 0;
+  margin-top: 10px;
+  width: 300px;
+  cursor: pointer;
+}
+
+.form__field {
+  font-family: inherit;
+  width: 100%;
+  border: 0;
+  border-bottom: 2px solid $gray;
+  outline: 0;
+  font-size: 1.3rem;
+  color: $white;
+  padding: 7px 0;
+  background: transparent;
+  transition: border-color 0.2s;
+
+  &::placeholder {
+    color: transparent;
+  }
+
+  &:placeholder-shown ~ .form__label {
+    font-size: 1.3rem;
+    cursor: text;
+    top: 20px;
+  }
+}
+
+.form__label {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.5s;
+  font-size: 1rem;
+  color: $gray;
+}
+
+.form__field:focus {
+  ~ .form__label {
+    position: absolute;
+    top: 0;
+    display: block;
+    transition: 0.5s;
+    font-size: 1rem;
+    color: $primary;
+    font-weight:700;
+  }
+  padding-bottom: 6px;
+  font-weight: 700;
+  border-width: 3px;
+  border-image: linear-gradient(to right, $primary,$secondary);
+  border-image-slice: 1;
+}
+/* reset input */
+.form__field{
+  &:required,&:invalid { box-shadow:none; }
+}
+
