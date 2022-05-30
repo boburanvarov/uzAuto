@@ -6,33 +6,68 @@
     </button>
   </div>
 
-<!--  <div class="passport-box">-->
-<!--    &lt;!&ndash;    &ndash;&gt;-->
-<!--    <div class="pass-block">-->
+<div class="selected-box">
 
-<!--      <div class="form__group field">-->
-<!--        <input nz-input type="input" class="form__field" placeholder="cardNumber" name="cardNumber" id='cardNumber' required/>-->
-<!--        <label for="cardNumber" class="form__label">Card Number</label>-->
-<!--      </div>-->
+  <!--model-->
+  <div class="example-input" *ngIf="uzauto && uzAutoModels">
+    <nz-input-group nzSize="large" nzSearch  [nzAddOnAfter]="suffixIconButton">
+      <input
+        placeholder="selected model"
+        nz-input
+        (keyup.enter)="onChange($event)"
+        [nzAutocomplete]="auto"
+      />
+    </nz-input-group>
+    <ng-template #suffixIconButton>
+      <button nz-button nzType="primary" nzSize="large" nzSearch
+              (click)="onChange($event)"
+              (keyup.enter)="onChange($event)">
+        <i nz-icon nzType="search" nzTheme="outline"></i>
+      </button>
+    </ng-template>
+    <nz-autocomplete #auto>
+      <nz-auto-optgroup >
+
+        <nz-auto-option *ngFor="let option of uzAutoModels" [nzLabel]="option.name" [nzValue]="option.filial_id">
+          {{ option.name }}
+        </nz-auto-option>
+
+      </nz-auto-optgroup>
+    </nz-autocomplete>
+  </div>
 
 
-<!--      <div class="form__group field">-->
-<!--        <input nz-input type="input" class="form__field" placeholder="expiry" name="expiry" id='expiry' required/>-->
-<!--        <label for="expiry" class="form__label">Expiry Date</label>-->
-<!--      </div>-->
+  <!--filial-->
+  <div class="example-input" *ngIf="uzauto &&  this.filialGroups">
+    <nz-input-group nzSize="large" nzSearch  [nzAddOnAfter]="suffixIconButton">
+      <input
+        placeholder="selected Filials"
+        nz-input
+        (keyup.enter)="onChange($event)"
+        [nzAutocomplete]="auto"
 
-<!--    </div>-->
+      />
+    </nz-input-group>
+    <ng-template #suffixIconButton>
+      <button nz-button nzType="primary" nzSize="large" nzSearch
+              (click)="onChange($event)"
+              (keyup.enter)="onChange($event)">
+        <i nz-icon nzType="search" nzTheme="outline"></i>
+      </button>
+    </ng-template>
+    <nz-autocomplete #auto>
+      <nz-auto-optgroup >
 
-<!--  </div>-->
+        <nz-auto-option *ngFor="let option of filialGroups" [nzLabel]="option.name" [nzValue]="option.filial_id">
+          {{ option.name }}
+        </nz-auto-option>
 
-<!--  <div class="card">-->
+      </nz-auto-optgroup>
+    </nz-autocomplete>
+  </div>
 
-<!--    <nz-card class="card-block">-->
 
-
-<!--    </nz-card>-->
-<!--  </div>-->
-
+</div>
 
 
 </div>

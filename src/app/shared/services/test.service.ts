@@ -1,24 +1,26 @@
-import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {Injectable} from "@angular/core";
 import {DEVELOPMENT_IP} from "../constants/constants";
+import {HttpClient} from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'
 })
-export class AllService {
 
-  constructor(private http: HttpClient) { }
+export class TestService {
+  constructor(private http: HttpClient) {}
 
-
+  login(body: any){
+   return  this.http.post<any>(DEVELOPMENT_IP + 'auth/login', body)
+  }
 
   // Бренды
   getBrend(){
-    return this.http.get<any>(DEVELOPMENT_IP + 'ph:filials')
+    return this.http.get<any>(DEVELOPMENT_IP + 'uz-avto-savdo/get-branches')
   }
 
   //Модели
   postModel(body: any){
-    return this.http.post<any>(DEVELOPMENT_IP + 'ph:models', body)
+    return this.http.post<any>(DEVELOPMENT_IP + 'uz-avto-savdo/get-models', body)
   }
 
   //Очередь
@@ -28,7 +30,7 @@ export class AllService {
 
   //Дилеры
   postDealers(body: any){
-    return this.http.post<any>(DEVELOPMENT_IP + 'ph:dealers', body)
+    return this.http.post<any>(DEVELOPMENT_IP + 'uz-avto-savdo/get-dealers', body)
   }
 
   //Остатки

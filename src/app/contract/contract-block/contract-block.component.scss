@@ -9,8 +9,9 @@ nz-button-group [nz-button] {
 .main{
   width: 100%;
   height: 100%;
-  background: url("../../../assets/img/tahoe3.jpg")no-repeat center  ;
+  //background: url("../../../assets/img/tahoe3.jpg")no-repeat center  ;
   background-size: cover;
+  padding: 10px;
 }
 .card{
   width: 100%;
@@ -44,106 +45,22 @@ nz-button-group [nz-button] {
 
 .cancel-group{
   width: 100%;
-  padding: 10px;
+  margin-bottom: 10px;
 }
 
+.example-input{
+  width: 300px;
+}
 
+::ng-deep .search-block {
+  cursor: pointer !important;
+  border: none;
+  background: #1890FF;
+}
 
+.selected-box {
+  display: flex;
+  gap: 0 20px;
+}
 
 ///////
-
-$primary: #11998e;
-$secondary: #38ef7d;
-$white: #fff;
-$gray: #9b9b9b;
-.form__group {
-  position: relative;
-  padding: 15px 0 0;
-  margin-top: 10px;
-  width: 300px;
-  cursor: pointer;
-}
-
-.form__field {
-  font-family: inherit;
-  width: 100%;
-  border: 0;
-  border-bottom: 2px solid $gray;
-  outline: 0;
-  font-size: 1.3rem;
-  color: $white;
-  padding: 7px 0;
-  background: none !important;
-  transition: border-color 0.2s;
-
-  &::placeholder {
-    color: transparent;
-  }
-
-  &:placeholder-shown ~ .form__label {
-    font-size: 1.3rem;
-    cursor: text;
-    top: 20px;
-  }
-}
-
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus,
-input:-webkit-autofill:active{
-  border-bottom: 4px solid $primary;
-  transition: background-color 5000s ease-in-out 0s;
-}
-
-input:-webkit-autofill {
-  -webkit-text-fill-color: blue;
-}
-
-.pass-block .form__label {
-  position: absolute;
-  top: 0;
-  display: block;
-  transition: 0.5s;
-  font-size: 1rem;
-  color: #0652cb;
-  font-weight: bold;
-}
-
-.form__label {
-  position: absolute;
-  top: 0;
-  display: block;
-  transition: 0.5s;
-  font-size: 1rem;
-  color: $white;
-}
-input#name.form__field{
-  background: none !important;
-}
-
-.form__field:focus {
-  ~ .form__label {
-    position: absolute;
-    top: 0;
-    display: block;
-    transition: 0.5s;
-    font-size: 1rem;
-    color: $primary;
-    font-weight:700;
-    background: none !important;
-  }
-  padding-bottom: 6px;
-  font-weight: 700;
-  border-width: 3px;
-  border-image: linear-gradient(to right, $primary,$secondary);
-  border-image-slice: 1;
-}
-/* reset input */
-.form__field{
-
-  &:required,&:invalid {
-    box-shadow:none;
-    background: none !important;
-  }
-}
-

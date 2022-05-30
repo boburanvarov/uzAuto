@@ -6,6 +6,9 @@ import { ContractBlockComponent } from './contract-block/contract-block.componen
 import {NzCardModule} from "ng-zorro-antd/card";
 import {NzButtonModule} from "ng-zorro-antd/button";
 import {NzIconModule} from "ng-zorro-antd/icon";
+import { NzAutocompleteModule } from 'ng-zorro-antd/auto-complete';
+import {NzInputModule} from "ng-zorro-antd/input";
+import {FormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -17,7 +20,10 @@ import {NzIconModule} from "ng-zorro-antd/icon";
     ContractRoutingModule,
     NzCardModule,
     NzButtonModule,
-    NzIconModule
+    NzIconModule,
+    NzAutocompleteModule,
+    NzInputModule,
+    FormsModule
   ]
 })
 export class ContractModule { }
