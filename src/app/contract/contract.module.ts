@@ -8,7 +8,10 @@ import {NzButtonModule} from "ng-zorro-antd/button";
 import {NzIconModule} from "ng-zorro-antd/icon";
 import { NzAutocompleteModule } from 'ng-zorro-antd/auto-complete';
 import {NzInputModule} from "ng-zorro-antd/input";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {NzDropDownModule} from "ng-zorro-antd/dropdown";
+import {NzSelectModule} from "ng-zorro-antd/select";
+import {NzRadioModule} from "ng-zorro-antd/radio";
 
 
 @NgModule({
@@ -23,7 +26,11 @@ import {FormsModule} from "@angular/forms";
     NzIconModule,
     NzAutocompleteModule,
     NzInputModule,
-    FormsModule
+    FormsModule,
+    NzDropDownModule,
+    NzSelectModule,
+    ReactiveFormsModule,
+    NzRadioModule
   ]
 })
 export class ContractModule { }

@@ -6,68 +6,175 @@
     </button>
   </div>
 
-<div class="selected-box">
+  <div class="selected-box">
 
-  <!--model-->
-  <div class="example-input" *ngIf="uzauto && uzAutoModels">
-    <nz-input-group nzSize="large" nzSearch  [nzAddOnAfter]="suffixIconButton">
-      <input
-        placeholder="selected model"
-        nz-input
-        (keyup.enter)="onChange($event)"
-        [nzAutocomplete]="auto"
-      />
-    </nz-input-group>
-    <ng-template #suffixIconButton>
-      <button nz-button nzType="primary" nzSize="large" nzSearch
-              (click)="onChange($event)"
-              (keyup.enter)="onChange($event)">
-        <i nz-icon nzType="search" nzTheme="outline"></i>
-      </button>
-    </ng-template>
-    <nz-autocomplete #auto>
-      <nz-auto-optgroup >
+    <form [formGroup]="uzAutoForm">
 
-        <nz-auto-option *ngFor="let option of uzAutoModels" [nzLabel]="option.name" [nzValue]="option.filial_id">
-          {{ option.name }}
-        </nz-auto-option>
+      <!--    model-->
+      <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Selected auto models" formControlName="models"
+                 *ngIf="uzauto && uzAutoModels">
+        <nz-option *ngFor="let model of uzAutoModels" nzLabel="{{model.name}}" nzValue="{{model.model_id}}"></nz-option>
+      </nz-select>
 
-      </nz-auto-optgroup>
-    </nz-autocomplete>
+      <!--    diler-->
+      <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Selected autodiler" formControlName="models"
+                 *ngIf="uzauto &&  this.filialGroups"
+                 (ngModelChange)="dilerClicked($event)">
+        <nz-option *ngFor="let filial of filialGroups" nzLabel="{{filial.name}}"
+                   nzValue="{{filial.region_id}}"></nz-option>
+      </nz-select>
+
+      <!--    diler-filials-->
+      <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Selected autodiler" formControlName="models"
+                 *ngIf="filialDilersSHow">
+        <nz-option *ngFor="let filial of filialDilers" nzLabel="{{filial.name}}"
+                   nzValue="{{filial.region_id}}"></nz-option>
+      </nz-select>
+
+
+    </form>
+
+    <!--  auttocomplete-->
+    <!--  &lt;!&ndash;model&ndash;&gt;-->
+    <!--  <div class="example-input" *ngIf="uzauto && uzAutoModels">-->
+    <!--    <nz-input-group nzSize="large" nzSearch  [nzAddOnAfter]="suffixIconButton">-->
+    <!--      <input-->
+    <!--        placeholder="selected model"-->
+    <!--        nz-input-->
+    <!--        (keyup.enter)="onChange($event)"-->
+    <!--        [nzAutocomplete]="auto"-->
+    <!--      />-->
+    <!--    </nz-input-group>-->
+    <!--    <ng-template #suffixIconButton>-->
+    <!--      <button nz-button nzType="primary" nzSize="large" nzSearch-->
+    <!--              (click)="onChange($event)"-->
+    <!--              (keyup.enter)="onChange($event)">-->
+    <!--        <i nz-icon nzType="search" nzTheme="outline"></i>-->
+    <!--      </button>-->
+    <!--    </ng-template>-->
+    <!--    <nz-autocomplete #auto>-->
+    <!--      <nz-auto-optgroup >-->
+
+    <!--        <nz-auto-option *ngFor="let option of uzAutoModels" [nzLabel]="option.name" [nzValue]="option.filial_id">-->
+    <!--          {{ option.name }}-->
+    <!--        </nz-auto-option>-->
+
+    <!--      </nz-auto-optgroup>-->
+    <!--    </nz-autocomplete>-->
+    <!--  </div>-->
+
+
+    <!--  &lt;!&ndash;filial&ndash;&gt;-->
+    <!--  <div class="example-input" *ngIf="uzauto &&  this.filialGroups">-->
+    <!--    <nz-input-group nzSize="large" nzSearch  [nzAddOnAfter]="suffixIconButton">-->
+    <!--      <input-->
+    <!--        placeholder="selected Filials"-->
+    <!--        nz-input-->
+    <!--        (keyup.enter)="onChange($event)"-->
+    <!--        [nzAutocomplete]="auto"-->
+
+    <!--      />-->
+    <!--    </nz-input-group>-->
+    <!--    <ng-template #suffixIconButton>-->
+    <!--      <button nz-button nzType="primary" nzSize="large" nzSearch-->
+    <!--              (click)="onChange($event)"-->
+    <!--              (keyup.enter)="onChange($event)">-->
+    <!--        <i nz-icon nzType="search" nzTheme="outline"></i>-->
+    <!--      </button>-->
+    <!--    </ng-template>-->
+    <!--    <nz-autocomplete #auto>-->
+    <!--      <nz-auto-optgroup >-->
+
+    <!--        <nz-auto-option *ngFor="let option of filialGroups" [nzLabel]="option.name" [nzValue]="option.filial_id">-->
+    <!--          {{ option.name }}-->
+    <!--        </nz-auto-option>-->
+
+    <!--      </nz-auto-optgroup>-->
+    <!--    </nz-autocomplete>-->
+    <!--  </div>-->
+
+
   </div>
 
+  <div class="products">
 
-  <!--filial-->
-  <div class="example-input" *ngIf="uzauto &&  this.filialGroups">
-    <nz-input-group nzSize="large" nzSearch  [nzAddOnAfter]="suffixIconButton">
-      <input
-        placeholder="selected Filials"
-        nz-input
-        (keyup.enter)="onChange($event)"
-        [nzAutocomplete]="auto"
+    <div class="card" *ngFor="let car of cars; let in = index">
+      <div class="card-body">
 
-      />
-    </nz-input-group>
-    <ng-template #suffixIconButton>
-      <button nz-button nzType="primary" nzSize="large" nzSearch
-              (click)="onChange($event)"
-              (keyup.enter)="onChange($event)">
-        <i nz-icon nzType="search" nzTheme="outline"></i>
-      </button>
-    </ng-template>
-    <nz-autocomplete #auto>
-      <nz-auto-optgroup >
+        <div class="img-wrap">
+          <div class="main-card">
+            <img src="{{car.img}}" alt="{{car.colorName}}" >
+<!--            <img src="{{mainAvtoImg}}" alt="{{car.colorName}}" *ngIf="!imgShow">-->
+          </div>
 
-        <nz-auto-option *ngFor="let option of filialGroups" [nzLabel]="option.name" [nzValue]="option.filial_id">
-          {{ option.name }}
-        </nz-auto-option>
+          <div class="color-block">
 
-      </nz-auto-optgroup>
-    </nz-autocomplete>
+            <div class="default-box" [ngClass]="{'activeColor':  in !== idC }" (click)="mainImg(cars[in], in)">
+              <div class="in-color-box"></div>
+            </div>
+            <div class="color-box" *ngFor="let color of car.colors; let i = index" (click)="selectedColor(cars[in], i)"
+                 style="backgroundColor: {{color.hex_value}}; border: 1px solid  {{color.hex_value}}"
+                 [ngClass]="{'activeColor':  in === idC && i === id}">
+              <div class="in-color-box" style="backgroundColor: {{color.hex_value}}; "></div>
+            </div>
+
+          </div>
+        </div>
+
+        <ul class="info-block" *ngFor="let modification of car.modifications">
+          <li>
+            <span>Идентификатор модификации:</span>
+            <span>{{modification.modification_id}}</span>
+          </li>
+
+          <li>
+            <span>Название модификации:</span>
+            <span>{{modification.name}}</span>
+          </li>
+
+          <li>
+            <span>Цена:</span>
+            <span>{{modification.price}}</span>
+          </li>
+
+          <li>
+            <span> Производится (Y - Да, N - Нет):</span>
+            <span>{{modification.producing}}</span>
+          </li>
+
+          <li>
+            <span>Расход:</span>
+            <span>{{modification.fuel_consumption}}</span>
+          </li>
+
+          <li>
+            <span> Лошадиные силы:</span>
+            <span>{{modification.horsepower}}</span>
+          </li>
+
+          <li>
+            <span>Ускорение:</span>
+            <span>{{modification.acceleration}}</span>
+          </li>
+
+          <li>
+            <span>Коробка передач:</span>
+            <span>{{modification.transmission}}</span>
+          </li>
+
+          <li>
+            <span>Минимальная цена:</span>
+            <span>{{car.min_price}}</span>
+          </li>
+
+        </ul>
+
+
+      </div>
+
+    </div>
+
   </div>
-
-
-</div>
 
 
 </div>
