@@ -16,7 +16,7 @@ export class ContractBlockComponent implements OnInit {
 
   filialDilersSHow = false;
 
-  imgShow = true;
+  activeClass = true;
 
   filialGroups: any[] = [];
   filialDilers: any[] = [];
@@ -209,14 +209,16 @@ export class ContractBlockComponent implements OnInit {
     return   ind.model_id ==  selected.model_id
     })
     this.selectedAvto = selected
+    this.activeClass = false;
     this.cars.filter((c)=>{
       if( c.model_id === selected.model_id){
         // @ts-ignore
         c.img = selected.colors[i].img
-        this.imgShow = false;
+
       }
     })
     console.log(selected.colors[i], 'colorsss');
+    console.log(this.idC, 'idc', i)
 
   }
 
@@ -226,8 +228,7 @@ export class ContractBlockComponent implements OnInit {
       this.mainAvtoImg.filter(m=>{
         if(m.model_id === selected.model_id){
           this.cars[i].img = m.img;
-          this.idC= -1;
-          this.id= -1;
+          this.activeClass = true;
         }
 
     })

@@ -109,12 +109,12 @@
 
           <div class="color-block">
 
-            <div class="default-box" [ngClass]="{'activeColor':  in !== idC }" (click)="mainImg(cars[in], in)">
+            <div class="default-box activeColor" [ngClass]="{'activeColor': in === idC && activeClass}" (click)="mainImg(cars[in], in)">
               <div class="in-color-box"></div>
             </div>
             <div class="color-box" *ngFor="let color of car.colors; let i = index" (click)="selectedColor(cars[in], i)"
                  style="backgroundColor: {{color.hex_value}}; border: 1px solid  {{color.hex_value}}"
-                 [ngClass]="{'activeColor':  in === idC && i === id}">
+                 [ngClass]="{'activeColor':  in === idC && i === id && !activeClass}">
               <div class="in-color-box" style="backgroundColor: {{color.hex_value}}; "></div>
             </div>
 

@@ -95,6 +95,14 @@ nz-button-group [nz-button] {
   background: black;
 }
 
+.card .color-block .default-box.removeActive .in-color-box{
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin: 4px auto;
+  background: none;
+}
+
 .card .card-body{
   display: flex;
   align-items: center;
